@@ -12,7 +12,8 @@ interface Invoice {
 }
 
 interface InvoicesListProps {
-  invoices: Invoice[];
+  invoices: readonly Invoice[];  // Add 'readonly' here
+  
 }
 
 export function InvoicesList({ invoices }: InvoicesListProps) {

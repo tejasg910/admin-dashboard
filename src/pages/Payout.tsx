@@ -4,9 +4,9 @@ import { PaymentHistory } from '@/components/payout/PaymentHistory';
 import { InvoicesList } from '@/components/payout/InvoicesList';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowUpRight, Send } from 'lucide-react';
+import { ArrowUpRight, Send, Wallet } from 'lucide-react';
 
-export default function Payout() {
+function Payout() {
   const payments = [
     {
       id: '1',
@@ -84,44 +84,57 @@ export default function Payout() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-2">
-          <BalanceCard
-            balance="$673,412.66"
-            cardNumber="1234"
-            lastUpdate="08/21"
-          />
-          <div className="mt-6">
-            <WeeklySummary />
-          </div>
-        </div>
-        <div>
-          <Card className="p-6 bg-blue-600 text-white">
-            <h3 className="text-lg font-semibold mb-2">Wallet Balance</h3>
-            <p className="text-3xl font-bold mb-4">$824,571.93</p>
-            <p className="text-sm opacity-80">+6.84% from last week</p>
-            <div className="grid grid-cols-2 gap-4 mt-6">
-              <Button variant="secondary" className="w-full">
+      {/* First row: Balance and Wallet cards */}
+      <div className="grid grid-cols-2 gap-6 w-full">
+        <BalanceCard
+          balance="$673,412.66"
+          cardNumber="1234"
+          lastUpdate="08/21"
+        />
+        <Card className="p-6 bg-blue-600">
+          <div className="flex justify-between items-start ">
+            <div>
+              <p className="text-blue-100">Wallet Balance</p>
+              <h2 className="text-3xl font-bold mt-1 text-white">$824,571.93</h2>
+              <div className="flex items-center mt-2 text-blue-100">
+                <Wallet className="h-4 w-4 mr-1" />
+                <span>+6.84% from last week</span>
+              </div>
+              <p className="text-xs text-blue-100 mt-1">Last updated: Today</p>
+            </div>
+            <div className="flex gap-2">
+              <Button
+                variant="secondary"
+                size="sm"
+                className="bg-blue-500 hover:bg-blue-400 text-white border-none"
+              >
                 <Send className="h-4 w-4 mr-2" />
                 Send Invoice
               </Button>
-              <Button variant="secondary" className="w-full">
+              <Button
+                variant="secondary"
+                size="sm"
+                className="bg-blue-500 hover:bg-blue-400 text-white border-none"
+              >
                 <ArrowUpRight className="h-4 w-4 mr-2" />
                 Transfer
               </Button>
             </div>
-          </Card>
-        </div>
+          </div>
+        </Card>      </div>
+
+      {/* Second row: Weekly Summary and Invoices */}
+      <div className="grid grid-cols-2 gap-6 w-full">
+        <WeeklySummary />
+        <InvoicesList invoices={invoices} />
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-2">
-          <PaymentHistory payments={payments} />
-        </div>
-        <div>
-          <InvoicesList invoices={invoices} />
-        </div>
+      {/* Third row: Payment History (full width) */}
+      <div className="w-full">
+        <PaymentHistory payments={payments} />
       </div>
     </div>
   );
 }
+
+export default Payout

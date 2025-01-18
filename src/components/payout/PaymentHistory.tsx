@@ -15,7 +15,7 @@ interface Payment {
 }
 
 interface PaymentHistoryProps {
-  payments: Payment[];
+  payments: readonly Payment[];
 }
 
 export function PaymentHistory({ payments }: PaymentHistoryProps) {
@@ -24,9 +24,9 @@ export function PaymentHistory({ payments }: PaymentHistoryProps) {
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-lg font-semibold">Payment History</h3>
         <div className="flex gap-2">
-          <button className="text-sm text-gray-500 hover:text-gray-900">Monthly</button>
-          <button className="text-sm text-gray-500 hover:text-gray-900">Weekly</button>
-          <button className="text-sm text-blue-600 font-medium">Today</button>
+          <button className="text-sm text-white hover:text-gray-900">Monthly</button>
+          <button className="text-sm text-white hover:text-gray-900">Weekly</button>
+          <button className="text-sm text-white  hover:text-gray-900">Today</button>
         </div>
       </div>
       <div className="space-y-4">

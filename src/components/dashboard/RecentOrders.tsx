@@ -10,7 +10,7 @@ interface Order {
 }
 
 interface RecentOrdersProps {
-  orders: Order[];
+  orders: readonly Order[];
 }
 
 export function RecentOrders({ orders }: RecentOrdersProps) {

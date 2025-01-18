@@ -1,18 +1,18 @@
 import { Outlet } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, CreditCard, Inbox, Settings, Search, Bell, User } from 'lucide-react';
+import { LayoutDashboard, CreditCard,  Settings, Search, Bell, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function DashboardLayout() {
   const navigation = [
     { name: 'Dashboard', href: '/', icon: LayoutDashboard },
     { name: 'Payout', href: '/payout', icon: CreditCard },
-    { name: 'Inbox', href: '/inbox', icon: Inbox },
+    // { name: 'Inbox', href: '/inbox', icon: Inbox },
     { name: 'Settings', href: '/settings', icon: Settings },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 min-w-full border ">
       {/* Sidebar */}
       <div className="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
         <div className="flex h-16 items-center px-6">
@@ -40,7 +40,7 @@ export default function DashboardLayout() {
       </div>
 
       {/* Main content */}
-      <div className="pl-64">
+      <div className="pl-64 min-w-full">
         {/* Header */}
         <header className="h-16 bg-white shadow-sm">
           <div className="flex h-full items-center justify-between px-6">
@@ -54,10 +54,10 @@ export default function DashboardLayout() {
             </div>
             <div className="flex items-center space-x-4">
               <button className="p-2 hover:bg-gray-100 rounded-lg">
-                <Bell className="h-5 w-5 text-gray-600" />
+                <Bell className="h-5 w-5 text-white" />
               </button>
               <button className="flex items-center space-x-2 hover:bg-gray-100 rounded-lg p-2">
-                <User className="h-5 w-5 text-gray-600" />
+                <User className="h-5 w-5 text-white" />
                 <span className="text-sm font-medium">Dedrick Marks</span>
               </button>
             </div>
@@ -65,7 +65,7 @@ export default function DashboardLayout() {
         </header>
 
         {/* Page content */}
-        <main className="p-6 w-full">
+        <main className="p-6 ">
           <Outlet />
         </main>
       </div>
